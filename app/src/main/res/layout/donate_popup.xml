@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Like anything, a lot of time has been put into creating this app. If you're feeling generous, you could buy me a coffee!
+\n\nYour support is genuinely appreciated!"
+        android:textColor="#000000" />
+
+
+    <Button
+        android:id="@+id/donateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donate"
+        android:background="@drawable/round_button"
+        android:textColor="#ffffff"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

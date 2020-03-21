@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    android:orientation="vertical"
+    android:paddingLeft="3dp"
+
+    android:paddingRight="1dp"
+    tools:context=".MainActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:background="@color/cardBackground"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:scrollbars="vertical"/>
+
+    <EditText
+        android:id="@+id/itemEntry"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="17dp"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:textColor="@color/textColor" />
+
+    <Button
+        android:id="@+id/button_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/itemEntry"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="9dp"
+        android:layout_toEndOf="@id/itemEntry"
+        android:background="@drawable/round_button"
+        android:text="+"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+</RelativeLayout>

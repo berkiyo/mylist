@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Light Theme Colors -->
+    <color name="colorPrimary">#fff59d</color>
+    <color name="colorPrimaryDark">#fff59d</color>
+    <color name="colorAccent">#212121</color>
+    <color name="titleColor">#000000</color>
+    <color name="textColor">#000000</color>
+
+    <color name="cardBackground">#EEEEEE</color>
+    <color name="mainBackground">#FFFFFF</color>
+
+</resources>

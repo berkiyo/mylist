@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mylist</string>
+
+    <string-array name="fontsizes">
+        <item>Default</item>
+        <item>Small</item>
+        <item>Large</item>
+    </string-array>
+</resources>
