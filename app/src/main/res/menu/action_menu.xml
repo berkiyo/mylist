@@ -15,10 +15,6 @@
         android:title="About"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/item4"
-        android:title="Donate"
-        app:showAsAction="never"/>
-
 
 
 </menu>

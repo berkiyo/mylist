@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+// PLANNED
+
 public class DonatePopup extends AppCompatDialogFragment {
     @NonNull
     @Override

@@ -21,7 +21,7 @@ public class AboutPopup extends AppCompatDialogFragment {
                 "\n\n" +
                 "Project Page: www.tekbyte.net/mylist-app" +
                 "\n\n\n" +
-                "Version v1.2.0");
+                "Version v1.0.0");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

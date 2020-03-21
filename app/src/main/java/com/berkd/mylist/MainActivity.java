@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -226,11 +228,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.item3:
                 aboutPopup();
                 break;
-
+/*
             // item3 = Donate
             case R.id.item4:
                 donatePopup();
                 break;
+
+ */
         }
 
         return super.onOptionsItemSelected(item);
@@ -246,8 +250,33 @@ public class MainActivity extends AppCompatActivity {
      *  Just initialise the about-popup
      */
     public void aboutPopup() {
-        AboutPopup aboutPopup = new AboutPopup();
-        aboutPopup.show(getSupportFragmentManager(), "about popup dialog");
+
+
+
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+        View mView = getLayoutInflater().inflate(R.layout.about_popup, null);
+        mBuilder.setTitle("About");
+
+        mBuilder.setNeutralButton("PROJECT PAGE", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Uri projectPage = Uri.parse("https://www.tekbyte.net/mylist-app");
+                Intent intent = new Intent(Intent.ACTION_VIEW, projectPage);
+                startActivity(intent);
+            }
+        });
+
+        mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        mBuilder.setView(mView);
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
     }
 
     /**
