@@ -6,7 +6,7 @@
         src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
 </a>
 
-<a href="https://play.google.com/store/apps/details?id=com.berkd.mylist">
+<a href="https://github.com/ExpertWebMedia/mylist/releases">
     <img alt="Get it on GitHub"
         height="80"
         src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/badges/get-it-on-github.png" />
