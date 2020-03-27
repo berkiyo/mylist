@@ -1,4 +1,5 @@
 # Mylist
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/berkcodes)  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ExpertWebMedia/mylist)
 
 <a href="https://play.google.com/store/apps/details?id=com.berkd.mylist">
     <img alt="Get it on Google Play"
@@ -17,3 +18,6 @@ Mylist is a minimal list application designed to stay out of the way. You can us
 
 
 ![Mylist](https://raw.githubusercontent.com/ExpertWebMedia/mylist/master/screenshots/mylist1.png)
+
+## Want to support?
+Development takes a lot of time and effort. If you're feeling generous, feel free to [buy me a coffee](https://www.paypal.me/berkcodes)!
