@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mylist</string>
+    <string name="action_fontsize">Yazı Boyutu</string>
+    <string name="button_clear">TEMİZLE</string>
+    <string name="action_about">Hakkında</string>
+    <string name="font_default">Varsayılan</string>
+    <string name="font_small">Küçük</string>
+    <string name="font_large">Büyük</string>
+</resources>

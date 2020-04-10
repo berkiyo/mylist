@@ -22,6 +22,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         void onItemClick(int position);
 
         void onDeleteClick(int position);
+
+        void onEditClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -33,13 +35,15 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         public ImageView mImageView;
         public TextView mTextView1;
         public TextView mTextView2;
-        public ImageView mDeleteButton;
+        public ImageView mDeleteButton; // Delete button, x
+        public ImageView mEditButton; // Edit button, edit the text
 
         public ExampleViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
             mTextView1 = itemView.findViewById(R.id.textView1);
             mTextView2 = itemView.findViewById(R.id.textView2);
             mDeleteButton = itemView.findViewById(R.id.delete_button);
+            mEditButton = itemView.findViewById(R.id.edit_button);
 
             mDeleteButton.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -48,6 +52,18 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
+            mEditButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onEditClick(position);
                         }
                     }
                 }

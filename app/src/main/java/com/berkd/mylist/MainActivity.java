@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -74,14 +77,19 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
+
             @Override
             public void onItemClick(int position) {
                 removeItem(position);
             }
+
             @Override
             public void onDeleteClick(int position) {
                 removeItem(position);
             }
+
+            @Override
+            public void onEditClick(int position) { editItem(position); }
         });
     }
 
@@ -92,6 +100,59 @@ public class MainActivity extends AppCompatActivity {
         mMainList.remove(position);
         mAdapter.notifyItemRemoved(position);
     }
+
+
+    /**
+     * CHANGE ITEM
+     *  To be used to change the text, called after the dialog is closed (below)
+     */
+    public void changeItem(int position, String text) {
+        mMainList.get(position).changeText1(text);
+        mAdapter.notifyItemChanged(position);
+    }
+
+    /**
+     * EDIT ITEM
+     *  Edit the text!
+     */
+    public void editItem(final int position) {
+
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.edit_popup, null);
+
+        final EditText mEditText = (EditText) mView.findViewById(R.id.editTextField);
+        final String mStringStore = mMainList.get(position).getText1();
+
+        mEditText.setText(mStringStore); // set the text value to the value select from the position
+        mBuilder.setView(mView);
+
+
+
+        mBuilder.setTitle("Edit");
+
+        mBuilder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                changeItem(position, mEditText.getText().toString());
+                saveData();
+                dialog.dismiss();
+            }
+        });
+
+        mBuilder.setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+
+        });
+
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
+    }
+
+
+
 
     private void setInsertButton() {
         Button buttonInsert = findViewById(R.id.button_insert);
@@ -320,8 +381,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             /**
-             * SWIPE FUNCTIONALITY
-             *  When swiping left or right, delete the task.
+             * TAP FUNCTIONALITY
+             *  When tapped, edit the task.
              *  TODO -> Need to implement this properly - for now only hold and drag works.
              */
             @Override
@@ -368,8 +429,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void settingsPopup() {
         final int defaultFont = 17;
-        final int smallFont = 15;
-        final int largeFont = 20;
+        final int smallFont = 14;
+        final int largeFont = 21;
 
 
 
