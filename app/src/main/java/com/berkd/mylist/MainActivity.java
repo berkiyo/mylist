@@ -1,7 +1,9 @@
 package com.berkd.mylist;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +13,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,6 +24,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         setInsertButton();
         cardMover();
         loadFont();
+        darkModeEnabled();
 
         /*
         SharedPreferences spinnerPref = getSharedPreferences("SpinnerData", MODE_PRIVATE);
@@ -386,6 +394,19 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+
+    public void darkModeEnabled() {
+        int darkStatus = getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK;
+        ActionBar actionBar = getSupportActionBar();
+        Button addButton = findViewById(R.id.button_insert);
+
+        if (darkStatus == Configuration.UI_MODE_NIGHT_YES) {
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#7300BF")));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.darkStatusBar)); //status bar or the time bar at the top
+            addButton.setBackgroundResource(R.drawable.round_button_dark);
+        }
+    }
 
     /**
      * Triggered when user is about to clear the mainlist

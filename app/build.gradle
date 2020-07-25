@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.berkd.mylist"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 3
         versionName "1.3.0"
