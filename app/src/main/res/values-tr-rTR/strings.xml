@@ -7,4 +7,6 @@
     <string name="font_default">Varsayılan</string>
     <string name="font_small">Küçük</string>
     <string name="font_large">Büyük</string>
+    <string name="action_dark_theme">Toggle Dark Theme</string>
+    <string name="action_backup">Backup and Restore</string>
 </resources>

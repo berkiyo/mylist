@@ -1,5 +1,5 @@
 # Mylist
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/berkcodes)  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ExpertWebMedia/mylist)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/ExpertWebMedia/mylist) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/berkcodes)
 
 <a href="https://play.google.com/store/apps/details?id=com.berkd.mylist">
     <img alt="Get it on Google Play"

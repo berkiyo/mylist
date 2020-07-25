@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
         mBuilder.setView(mView);
 
 
-
         mBuilder.setTitle("Edit");
 
         mBuilder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
@@ -239,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    /**
+    /** /////////////////////// M E N U ////////////////////////
      * WHEN OPTIONS MENU IS SELECT, CURRENTLY DOES NOT MUCH BUT WIP
      * TODO -> Get these functions things implemented (CURRENTLY WIP)
      */
@@ -280,13 +279,22 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
 
-            // item2 = FontSize
+            // item 2 = Dark Theme Toggle
             case R.id.item2:
+                darkThemePopup();
+                break;
+
+            // item3 = FontSize
+            case R.id.item3:
                 settingsPopup();
                 break;
 
-            // item3 = About
-            case R.id.item3:
+            // item 4 = backup and export
+            case R.id.item4:
+                backupPopup();
+                break;
+            // item4 = About
+            case R.id.item5:
                 aboutPopup();
                 break;
 /*
@@ -339,6 +347,23 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog = mBuilder.create();
         dialog.show();
     }
+
+    /**
+     * Dark theme popup
+     */
+    public void darkThemePopup() {
+
+        Toast.makeText(this, "Dark Theme Toggled", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Backup and restore popup (maybe intent?)
+     */
+    public void backupPopup() {
+
+        Toast.makeText(this, "Backup and Restore Pressed", Toast.LENGTH_SHORT).show();
+    }
+
 
     /**
      * Donate_Popup
@@ -555,8 +580,5 @@ public class MainActivity extends AppCompatActivity {
         int spinnerValue = sharedPref.getInt("userChoiceSpinner",-1);
         return spinnerValue;
     }
-
-
-
 
 }
