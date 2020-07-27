@@ -3,12 +3,13 @@
     <!-- #fff59d -->
     <!-- Light Theme Colors -->
     <color name="colorPrimary">#fff59d</color>
-    <color name="colorPrimaryDark">#fff59d</color>
+    <color name="colorPrimaryDark">#B2A956</color>
     <color name="colorAccent">#212121</color>
-    <color name="titleColor">#000000</color>
+    <color name="titleColor">#ffffff</color>
     <color name="textColor">#000000</color>
-    <color name="darkStatusBar">#7300BF</color>
+    <color name="darkStatusBar">#9A8902</color>
     <color name="cardBackground">#EEEEEE</color>
     <color name="mainBackground">#FFFFFF</color>
+    <color name="action">#212121</color>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.berkd.mylist;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +19,10 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,11 +39,15 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<MainItem> mMainList;
@@ -87,13 +94,61 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
 
             @Override
-            public void onItemClick(int position) {
-                removeItem(position);
+            public void onItemClick(final int position) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                mBuilder.setTitle("Delete Item");
+                mBuilder.setMessage("Are you sure?");
+
+
+                mBuilder.setNegativeButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        removeItem(position);
+                        dialog.dismiss();
+                    }
+                });
+
+                mBuilder.setPositiveButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+
+                });
+
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
             }
 
             @Override
-            public void onDeleteClick(int position) {
-                removeItem(position);
+            public void onDeleteClick(final int position) {
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                mBuilder.setTitle("Delete Item");
+                mBuilder.setMessage("Are you sure?");
+
+
+                mBuilder.setNegativeButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        removeItem(position);
+                        dialog.dismiss();
+                    }
+                });
+
+                mBuilder.setPositiveButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+
+                });
+
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
+
             }
 
             @Override
@@ -124,8 +179,14 @@ public class MainActivity extends AppCompatActivity {
      *  Edit the text!
      */
     public void editItem(final int position) {
-
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
+/*
+        final String mStringStore = mMainList.get(position).getText1();
+        Intent intent = new Intent(MainActivity.this, EditActivity.class);
+        intent.putExtra("mStringStore", mStringStore); //  passthru the string
+        intent.putExtra("position", position);
+        startActivity(intent);
+*/
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this,android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
         View mView = getLayoutInflater().inflate(R.layout.edit_popup, null);
 
         final EditText mEditText = (EditText) mView.findViewById(R.id.editTextField);
@@ -135,9 +196,9 @@ public class MainActivity extends AppCompatActivity {
         mBuilder.setView(mView);
 
 
-        mBuilder.setTitle("Edit");
+        mBuilder.setTitle("Editing");
 
-        mBuilder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+        mBuilder.setNegativeButton("SAVE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 changeItem(position, mEditText.getText().toString());
@@ -198,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("task list", json);
         editor.apply();
     }
+
 
     /**
      * INSERT_ITEM
@@ -287,38 +349,57 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
 
-            // item 2 = Dark Theme Toggle
+            // item 2 = font settings
             case R.id.item2:
-                darkThemePopup();
-                break;
-
-            // item3 = FontSize
-            case R.id.item3:
                 settingsPopup();
                 break;
 
-            // item 4 = backup and export
-            case R.id.item4:
-                backupPopup();
-                break;
-            // item4 = About
-            case R.id.item5:
+            // item3 = about
+            case R.id.item3:
                 aboutPopup();
                 break;
-/*
-            // item3 = Donate
-            case R.id.item4:
-                donatePopup();
-                break;
-
- */
         }
 
         return super.onOptionsItemSelected(item);
     }
 
 
+    private void saveSharedPreferences()
+    {
+        // create some junk data to populate the shared preferences
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor prefEdit = prefs.edit();
+        prefEdit.putBoolean("SomeBooleanValue_True", true);
+        prefEdit.putInt("SomeIntValue_100", 100);
+        prefEdit.putFloat("SomeFloatValue_1.11", 1.11f);
+        prefEdit.putString("SomeStringValue_Unicorns", "Unicorns");
+        prefEdit.commit();
 
+        // BEGIN EXAMPLE
+        File myPath = new File(Environment.getExternalStorageDirectory().toString());
+        File myFile = new File(myPath, "MySharedPreferences");
+
+        try
+        {
+            FileWriter fw = new FileWriter(myFile);
+            PrintWriter pw = new PrintWriter(fw);
+
+            Map<String,?> prefsMap = prefs.getAll();
+
+            for(Map.Entry<String,?> entry : prefsMap.entrySet())
+            {
+                pw.println(entry.getKey() + ": " + entry.getValue().toString());
+            }
+
+            pw.close();
+            fw.close();
+        }
+        catch (Exception e)
+        {
+            // what a terrible failure...
+            Log.wtf(getClass().getName(), e.toString());
+        }
+    }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -369,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void backupPopup() {
 
-        Toast.makeText(this, "Backup and Restore Pressed", Toast.LENGTH_SHORT).show();
+
     }
 
 
@@ -402,10 +483,10 @@ public class MainActivity extends AppCompatActivity {
         Button addButton = findViewById(R.id.button_insert);
 
         if (darkStatus == Configuration.UI_MODE_NIGHT_YES) {
-            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#7300BF")));
-            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.darkStatusBar)); //status bar or the time bar at the top
-            addButton.setBackgroundResource(R.drawable.round_button_dark);
+
         }
+
+
     }
 
     /**

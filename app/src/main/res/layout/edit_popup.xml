@@ -7,8 +7,13 @@
     <EditText
         android:id="@+id/editTextField"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp" />
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:minLines="5"
+        android:lines="20"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
+        android:singleLine="false" />
 
 </LinearLayout>
