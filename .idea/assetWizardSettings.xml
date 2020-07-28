@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/app/extra/android-studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/more_vert/baseline_more_vert_24.xml" />
+                                      <entry key="url" value="jar:file:/app/extra/android-studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/undo/baseline_undo_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -317,7 +317,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_more_vert" />
+                            <entry key="outputName" value="ic_undo_black" />
                           </map>
                         </option>
                       </PersistentState>

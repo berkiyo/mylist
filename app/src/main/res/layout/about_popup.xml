@@ -9,9 +9,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mylist is an ad free, lightweight, easy to use, personal to-do list creator.
-\n\nVersion v1.3.0"
-        android:textSize="16dp"
-        android:textColor="#000000" />
+        android:text="Mylist is an ad free, lightweight, easy to use, personal to-do list creator. \n\nVersion v1.4.0"
+        android:textColor="@color/textColor"
+        android:textSize="16dp" />
 
 </LinearLayout>

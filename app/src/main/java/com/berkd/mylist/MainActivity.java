@@ -4,6 +4,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -70,15 +71,7 @@ public class MainActivity extends AppCompatActivity {
         setInsertButton();
         cardMover();
         loadFont();
-        darkModeEnabled();
 
-        /*
-        SharedPreferences spinnerPref = getSharedPreferences("SpinnerData", MODE_PRIVATE);
-        int spinnerValue = spinnerPref.getInt("userChoiceSpinner", -1);
-        if (spinnerValue != -1) {
-            mSpinner.setSelection(spinnerValue);
-        }
-*/
 
     }
 
@@ -172,6 +165,12 @@ public class MainActivity extends AppCompatActivity {
     public void changeItem(int position, String text) {
         mMainList.get(position).changeText1(text);
         mAdapter.notifyItemChanged(position);
+    }
+
+    public void copyText(int position) {
+        final String mStringStore = mMainList.get(position).getText1();
+        changeItem(position, mStringStore);
+        saveData();
     }
 
     /**
@@ -349,13 +348,20 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
 
-            // item 2 = font settings
+            /*
             case R.id.item2:
+                Toast.makeText(this, "Test undo!", Toast.LENGTH_SHORT).show();
+                //copyText(); // needs
+                break;
+            */
+            case R.id.item3:
+                nightModeSwitcher();
+                break;
+            case R.id.item4:
                 settingsPopup();
                 break;
 
-            // item3 = about
-            case R.id.item3:
+            case R.id.item5:
                 aboutPopup();
                 break;
         }
@@ -440,9 +446,25 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Dark theme popup
      */
-    public void darkThemePopup() {
+    public void nightModeSwitcher() {
 
-        Toast.makeText(this, "Dark Theme Toggled", Toast.LENGTH_SHORT).show();
+        int currentNightMode = getResources().getConfiguration().uiMode
+                & Configuration.UI_MODE_NIGHT_MASK;
+
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                AppCompatDelegate.setDefaultNightMode(
+                        AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                AppCompatDelegate.setDefaultNightMode(
+                        AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                AppCompatDelegate.setDefaultNightMode(
+                        AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+        }
     }
 
     /**
@@ -473,20 +495,6 @@ public class MainActivity extends AppCompatActivity {
         mBuilder.setView(mView);
         AlertDialog dialog = mBuilder.create();
         dialog.show();
-    }
-
-
-    public void darkModeEnabled() {
-        int darkStatus = getResources().getConfiguration().uiMode &
-                Configuration.UI_MODE_NIGHT_MASK;
-        ActionBar actionBar = getSupportActionBar();
-        Button addButton = findViewById(R.id.button_insert);
-
-        if (darkStatus == Configuration.UI_MODE_NIGHT_YES) {
-
-        }
-
-
     }
 
     /**

@@ -20,7 +20,8 @@
             android:text="Line 1"
             android:textColor="@color/textColor"
             android:textSize="17sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            android:paddingEnd="25dp"/>
 
         <TextView
             android:id="@+id/textView2"
