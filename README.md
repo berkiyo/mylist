@@ -17,7 +17,7 @@ Mylist is a minimal list application designed to stay out of the way. You can us
 
 
 
-![Mylist](https://raw.githubusercontent.com/ExpertWebMedia/mylist/master/screenshots/mylist1.png)
+![1](https://lh3.googleusercontent.com/ahVwGKNkgqA8q70qX1kazhywdqpmsKh30Lc3XcQzOPS04wdDzH-Jq2lseEd5Io8Gswc=w720-h310-rw) ![2](https://lh3.googleusercontent.com/igNRZBbggWaTJepeyWEKChpkS_dkOj7c-mqSbqbCVc4Q_DsCogm6aNp-yW8UZIO6ybQ=w720-h310-rw)
 
 ## Want to support?
 Development takes a lot of time and effort. If you're feeling generous, feel free to [buy me a coffee](https://www.paypal.me/berkcodes)!
